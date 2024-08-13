@@ -31,14 +31,14 @@ const Card: React.FC<CardProps> = ({
         <Image className="w-12 h-12" src={img} alt={`${title} image`} />
       </div>
       <div className="flex flex-col space-y-2">
-        <h2 className="size1">{title}</h2>
+        <h2 className="heading-1">{title}</h2>
 
-        <div className="flex space-x-3 size2">
+        <div className="flex space-x-3 body-text">
           <h6>{company}</h6>
           <h6>{location}</h6>
         </div>
 
-        <p className="size3 pr-16">{truncateText(description)}</p>
+        <p className="body-text2 pr-16">{truncateText(description)}</p>
 
         <ul className="flex space-x-2">
           <li

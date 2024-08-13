@@ -38,14 +38,14 @@ const Page = ({ searchParams }: { searchParams: Type }) => {
   return (
     <div className="flex space-x-28">
       <div className="w-8/12 bg-white ml-7 mt-20 mb-4">
-        <section className="clr1 space-y-3">
-          <h1 className="font-extrabold text-xl size6">Description</h1>
+        <section className="title2 space-y-3">
+          <h1 className="font-extrabold text-xl title-1">Description</h1>
           <p className="s">{searchParams.description}</p>
         </section>
 
         <section className="space-y-3 mt-10">
-          <h1 className="font-extrabold text-xl size6">Responsibilities</h1>
-          <ul className="clr1 space-y-3">
+          <h1 className="font-extrabold text-xl title-1">Responsibilities</h1>
+          <ul className="title2 space-y-3">
             {searchParams.res.map((item, index) => (
               <li className="flex text-base" key={index}>
                 <Image className="mr-3" src={icon} alt="Tick Icon" />
@@ -56,9 +56,9 @@ const Page = ({ searchParams }: { searchParams: Type }) => {
         </section>
 
         <section className="space-y-3 mt-10">
-          <h1 className="font-extrabold text-xl size6">Ideal Candidate</h1>
+          <h1 className="font-extrabold text-xl title-1">Ideal Candidate</h1>
           <ul className="list-disc text-base ml-5">
-            <li className="clr1 font-bold">
+            <li className="title2 font-bold">
               <div className="space-x-2 flex">
                 <span>Age ({searchParams.age})</span>
                 <span>Gender ({searchParams.gender})</span>
@@ -67,7 +67,7 @@ const Page = ({ searchParams }: { searchParams: Type }) => {
             {searchParams.traits.map((trait, index) => {
               const { key, value } = formatTrait(trait);
               return (
-                <li key={index} className="clr1">
+                <li key={index} className="title2">
                   <span className="font-bold">{key}</span>
                   <span>{value}</span>
                 </li>
@@ -77,7 +77,7 @@ const Page = ({ searchParams }: { searchParams: Type }) => {
         </section>
 
         <section className="space-y-4 mt-10">
-          <h1 className="font-extrabold text-xl size6">When & Where</h1>
+          <h1 className="font-extrabold text-xl title-1">When & Where</h1>
           <div className="flex space-x-4 items-center">
             <Image src={icon3} alt="Location Icon" />
             <p>{searchParams.whenandwhere}</p>
@@ -87,7 +87,7 @@ const Page = ({ searchParams }: { searchParams: Type }) => {
 
       <div className="w-3/12 mt-8 mb-4">
         <section className="space-y-6">
-          <h1 className="size6">About</h1>
+          <h1 className="title-1">About</h1>
           {[
             ["Posted On", icon2, searchParams.postedon],
             ["Deadline", icon4, searchParams.deadline],
@@ -98,7 +98,7 @@ const Page = ({ searchParams }: { searchParams: Type }) => {
             <div key={index} className="flex space-x-3">
               <Image className="w-10 h-10" src={icon} alt={`${label} Icon`} />
               <div>
-                <h5 className="size2">{label}</h5>
+                <h5 className="body-text">{label}</h5>
                 <h1 className="text-sm font-semibold">{value}</h1>
               </div>
             </div>
@@ -106,7 +106,7 @@ const Page = ({ searchParams }: { searchParams: Type }) => {
         </section>
 
         <section className="mt-5 mr-6 border-t-2 border-b-2 space-y-5 py-4">
-          <h1 className="size6">Categories</h1>
+          <h1 className="title-1">Categories</h1>
           <ul className="flex space-x-2">
             {searchParams.categories.map((category, index) => (
               <li
@@ -124,7 +124,7 @@ const Page = ({ searchParams }: { searchParams: Type }) => {
         </section>
 
         <section className="mt-5 mr-6 py-4 border-t-2 border-b-2 space-y-3">
-          <h1 className="size6">Required Skills</h1>
+          <h1 className="title-1">Required Skills</h1>
           <ul className="flex flex-wrap space-y-1 items-center gap-2">
             {searchParams.required.map((skill, index) => (
               <li

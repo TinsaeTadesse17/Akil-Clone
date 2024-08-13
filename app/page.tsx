@@ -31,13 +31,13 @@ export default function Home() {
       <div className="ml-32 mt-16 bg-white" style={{ width: "850px" }}>
         <div className="flex items-center justify-between">
           <div className="space-y-1">
-            <h1 className="size5 text-2xl font-bold">Opportunities</h1>
-            <h5 className="size2 text-lg text-gray-500 ml-1">
+            <h1 className="title-1 text-2xl font-bold">Opportunities</h1>
+            <h5 className="body-text text-lg text-gray-500 ml-1">
               Showing {sortedData.length} results
             </h5>
           </div>
 
-          <div className="mr-8 size2">
+          <div className="mr-8 body-text">
             <h5>
               Sort by:{" "}
               <span className="font-bold text-gray-600">
