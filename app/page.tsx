@@ -1,6 +1,6 @@
 "use client";
 import Card from "./components/card";
-import data from "../_data/jobs";
+import data from "../_data/jobs.json";
 import Link from "next/link";
 import img0 from "../public/img0.svg";
 import img1 from "../public/img1.svg";
@@ -13,7 +13,7 @@ const images = [img0, img1, img2, img3];
 export default function Home() {
   const [sortMethod, setSortMethod] = useState("Most Relevant");
 
-  const jobData = data();
+  const jobData = data;
 
   const sortedData = useMemo(() => {
     if (sortMethod === "Newest First") {
@@ -79,22 +79,22 @@ export default function Home() {
               <Link
                 key={index}
                 href={{
-                  pathname: "/Description",
-                  query: {
-                    description,
-                    res: responsibilities,
-                    age,
-                    gender,
-                    traits,
-                    whenandwhere: when_where,
-                    postedon: posted_on,
-                    deadline,
-                    location,
-                    start_date,
-                    end_date,
-                    categories,
-                    required: required_skills,
-                  },
+                  pathname: `/Description/${index}`,
+                  // query: {
+                  //   description,
+                  //   res: responsibilities,
+                  //   age,
+                  //   gender,
+                  //   traits,
+                  //   whenandwhere: when_where,
+                  //   postedon: posted_on,
+                  //   deadline,
+                  //   location,
+                  //   start_date,
+                  //   end_date,
+                  //   categories,
+                  //   required: required_skills,
+                  // },
                 }}
               >
                 <Card

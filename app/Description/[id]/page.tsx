@@ -1,28 +1,31 @@
-import icon2 from "../../public/3.svg";
-import icon3 from "../../public/4.svg";
-import icon4 from "../../public/fire.svg";
-import icon5 from "../../public/5.svg";
-import icon6 from "../../public/6.svg";
-import icon from "../../public/tick.svg";
+import icon2 from "../../../public/3.svg";
+import icon3 from "../../../public/4.svg";
+import icon4 from "../../../public/fire.svg";
+import icon5 from "../../../public/5.svg";
+import icon6 from "../../../public/6.svg";
+import icon from "../../../public/tick.svg";
 import Image from "next/image";
+import job from "../../../_data/jobs.json";
 
 interface Type {
   description: string;
-  res: string[];
+  responsibilities: string[];
   age: string;
   gender: string;
   traits: string[];
-  whenandwhere: string;
-  postedon: string;
+  when_where: string;
+  posted_on: string;
   deadline: string;
   location: string;
   start_date: string;
   end_date: string;
   categories: string[];
-  required: string[];
+  required_skills: string[];
 }
 
-const Page = ({ searchParams }: { searchParams: Type }) => {
+const Page = ({ params }: { params: any }) => {
+  const idx = params.id;
+  const aJob = job[idx];
   const colors = ["orange", "green", "purple"];
   const backgrounds = [
     "rgb(219, 219, 176)",
@@ -40,13 +43,13 @@ const Page = ({ searchParams }: { searchParams: Type }) => {
       <div className="w-8/12 bg-white ml-7 mt-20 mb-4">
         <section className="title2 space-y-3">
           <h1 className="font-extrabold text-xl title-1">Description</h1>
-          <p className="s">{searchParams.description}</p>
+          <p className="s">{aJob.description}</p>
         </section>
 
         <section className="space-y-3 mt-10">
           <h1 className="font-extrabold text-xl title-1">Responsibilities</h1>
           <ul className="title2 space-y-3">
-            {searchParams.res.map((item, index) => (
+            {aJob.responsibilities.map((item, index) => (
               <li className="flex text-base" key={index}>
                 <Image className="mr-3" src={icon} alt="Tick Icon" />
                 {item}
@@ -60,16 +63,16 @@ const Page = ({ searchParams }: { searchParams: Type }) => {
           <ul className="list-disc text-base ml-5">
             <li className="title2 font-bold">
               <div className="space-x-2 flex">
-                <span>Age ({searchParams.age})</span>
-                <span>Gender ({searchParams.gender})</span>
+                <span>Age ({aJob.ideal_candidate.age})</span>
+                <span>Gender ({aJob.ideal_candidate.gender})</span>
               </div>
             </li>
-            {searchParams.traits.map((trait, index) => {
+            {aJob.ideal_candidate.traits.map((trait, index) => {
               const { key, value } = formatTrait(trait);
               return (
                 <li key={index} className="title2">
                   <span className="font-bold">{key}</span>
-                  <span>{value}</span>
+                  <span className="font-light">{value}</span>
                 </li>
               );
             })}
@@ -80,7 +83,7 @@ const Page = ({ searchParams }: { searchParams: Type }) => {
           <h1 className="font-extrabold text-xl title-1">When & Where</h1>
           <div className="flex space-x-4 items-center">
             <Image src={icon3} alt="Location Icon" />
-            <p>{searchParams.whenandwhere}</p>
+            <p>{aJob.when_where}</p>
           </div>
         </section>
       </div>
@@ -89,11 +92,11 @@ const Page = ({ searchParams }: { searchParams: Type }) => {
         <section className="space-y-6">
           <h1 className="title-1">About</h1>
           {[
-            ["Posted On", icon2, searchParams.postedon],
-            ["Deadline", icon4, searchParams.deadline],
-            ["Location", icon3, searchParams.location],
-            ["Start Date", icon5, searchParams.start_date],
-            ["End Date", icon6, searchParams.end_date],
+            ["Posted On", icon2, aJob.about.posted_on],
+            ["Deadline", icon4, aJob.about.deadline],
+            ["Location", icon3, aJob.about.location],
+            ["Start Date", icon5, aJob.about.start_date],
+            ["End Date", icon6, aJob.about.end_date],
           ].map(([label, icon, value], index) => (
             <div key={index} className="flex space-x-3">
               <Image className="w-10 h-10" src={icon} alt={`${label} Icon`} />
@@ -108,7 +111,7 @@ const Page = ({ searchParams }: { searchParams: Type }) => {
         <section className="mt-5 mr-6 border-t-2 border-b-2 space-y-5 py-4">
           <h1 className="title-1">Categories</h1>
           <ul className="flex space-x-2">
-            {searchParams.categories.map((category, index) => (
+            {aJob.about.categories.map((category, index) => (
               <li
                 key={index}
                 style={{
@@ -126,7 +129,7 @@ const Page = ({ searchParams }: { searchParams: Type }) => {
         <section className="mt-5 mr-6 py-4 border-t-2 border-b-2 space-y-3">
           <h1 className="title-1">Required Skills</h1>
           <ul className="flex flex-wrap space-y-1 items-center gap-2">
-            {searchParams.required.map((skill, index) => (
+            {aJob.about.required_skills.map((skill, index) => (
               <li
                 key={index}
                 className="self-center p-1 text-blue-600 bg-purple-100"
